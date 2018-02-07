@@ -98,10 +98,10 @@ namespace DictionaryPractice
                 { "paschal","Acura \n" }
             };
 
-            foreach (KeyValuePair<string, string> lastname in carValet)
-            {
-                Console.WriteLine(lastname.Key);
-            }
+           // foreach (KeyValuePair<string, string> lastname in carValet)
+           // {
+           //     Console.WriteLine(lastname.Key);
+          //  }
             //create a dictionary of 10 zoo animals.the key will be 
             // the animlas type and the value will be the number of that
             //animal type at the zoo.print the animal with the highest quantity to the console
@@ -136,9 +136,62 @@ namespace DictionaryPractice
             {
                 if(animals.Value==highest)
                 {
-                    Console.WriteLine("\n"+animals.Key);
+                    Console.WriteLine("\nhighest animal: "+animals.Key);
                 }
             }
+
+            int lowest = highest;
+            foreach (KeyValuePair<String, int> animals in zooAnimals)
+            {
+
+                if (animals.Value < lowest)
+                {
+                    lowest = animals.Value;
+                }
+
+            }
+          
+            foreach (KeyValuePair<string, int> animals in zooAnimals)
+
+            {
+                
+                    
+                if (animals.Value == lowest)
+                {
+                    Console.WriteLine("\nLowest animal : " + animals.Key);
+                  
+                }
+            
+            }
+            zooAnimals.Remove("Tiger");
+            Console.WriteLine(  "\nnumber of animals: "+zooAnimals.Count());
+
+
+           
+                Console.WriteLine("Enter the Animal to check existence  in the Zoo");
+                string check = Console.ReadLine();
+                if(zooAnimals.ContainsKey(check))
+                {
+                    Console.WriteLine("Animals is in the Zoo already");
+                }
+                else
+                {
+                    Console.WriteLine("Do you want to enter the Animal in the Zoo ");
+                }
+
+            string input = Console.ReadLine().ToLower();
+            if(input=="yes")
+            {
+                zooAnimals.Add(check, 5);
+                Console.WriteLine("Animal added");
+
+            }
+            else
+            {
+                Console.WriteLine("Animal not added");
+            }
+
+            Console.WriteLine("Number of animals:"+zooAnimals.Count);
         }
     }
 }
